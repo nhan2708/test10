@@ -4038,7 +4038,7 @@ spawn(function()
     local AutoElite = Tabs.Main:AddSection("Elite Hunter Farm")
 
     local StatusElite = Tabs.Main:AddParagraph({
-        Title = "Auto Check Elite Hunter Spam",
+        Title = "Auto Check Elite Hunter Spawn",
         Content = "Status: "
     })
     
