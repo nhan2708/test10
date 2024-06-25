@@ -3203,7 +3203,7 @@ spawn(function()
 
 
     local ToggleSpawnCake = Tabs.Main:AddToggle("ToggleSpawnCake", {
-        Title = "Auto spam Katakuri",
+        Title = "Auto spawn Katakuri",
         Description = "", 
         Default = true })
     ToggleSpawnCake:OnChanged(function(Value)
