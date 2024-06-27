@@ -6219,7 +6219,7 @@ spawn(function()
     end)
 end)
 
-local ToggleCollectTP = Tabs.Fruit:AddToggle("ToggleCollectTP", {Title = "TP Collect Devil Fruit Spam",Description = "dịch chuyển tức thời đến fruit spam", Default = false })
+local ToggleCollectTP = Tabs.Fruit:AddToggle("ToggleCollectTP", {Title = "TP Collect Devil Fruit Spawn",Description = "dịch chuyển tức thời đến fruit spawn", Default = false })
 ToggleCollectTP:OnChanged(function(Value)
     _G.CollectFruitTP = Value
 end)
@@ -6236,7 +6236,7 @@ spawn(function()
             end
        end)
 
-local ToggleCollect = Tabs.Fruit:AddToggle("ToggleCollect", {Title = "Move Collect Devil Fruit Spam",Description = "bay đến fruit spam", Default = false })
+local ToggleCollect = Tabs.Fruit:AddToggle("ToggleCollect", {Title = "Move Collect Devil Fruit Spawn",Description = "bay đến fruit spawn", Default = false })
 ToggleCollect:OnChanged(function(Value)
     _G.Tweenfruit = Value
 end)
