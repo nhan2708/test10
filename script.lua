@@ -2561,11 +2561,11 @@ local listfastattack = {'Slow','Normal','Super'}
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttack = Value
 	if _G.FastAttack == "Slow" then
-		_G.Fast_Delay = 0.25
+		_G.Fast_Delay = 0.75
 	elseif _G.FastAttack == "Normal" then
-		_G.Fast_Delay = 0.175
+		_G.Fast_Delay = 0.5
 	elseif _G.FastAttack == "Super" then
-		_G.Fast_Delay = 0.15
+		_G.Fast_Delay = 0.25
 	 end
  end)
 
@@ -2766,7 +2766,64 @@ local listfastattack = {'Slow','Normal','Super'}
             end
         end
         end)
-	
+
+
+--// auto farm chest
+
+if Third_Sea then
+local ToggleChest = Tabs.Main:AddToggle("ToggleChest", {
+    Title = "Auto Farm Chest Stop If Has Items Tp",
+    Description = "auto farm rương dạng Tp reset", 
+    Default = false })
+ToggleChest:OnChanged(function(Value)
+    _G.chestsea3 = Value
+end)
+Options.ToggleChest:SetValue(false)
+end
+
+if Second_Sea then
+local ToggleChest = Tabs.Main:AddToggle("ToggleChest", {
+    Title = "Auto Farm Chest Stop If Has Items Tp",
+    Description = "auto farm rương dạng Tp reset", 
+    Default = false })
+ToggleChest:OnChanged(function(Value)
+    _G.chestsea2 = Value
+end)
+Options.ToggleChest:SetValue(false)
+end
+
+local ToggleChestTween = Tabs.Main:AddToggle("ToggleChestTween", {
+    Title = "Auto Chest Tween",
+    Description = "farm chest dạng bay", 
+    Default = false })
+ToggleChestTween:OnChanged(function(Value)
+    AutoFarmChest = Value
+end)
+Options.ToggleChestTween:SetValue(false)
+_G.MagnitudeAdd = 0
+spawn(function()
+	while wait() do 
+		if AutoFarmChest then
+			for i,v in pairs(game:GetService("Workspace"):GetChildren()) do 
+				if v.Name:find("Chest") then
+					if game:GetService("Workspace"):FindFirstChild(v.Name) then
+						if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5000+_G.MagnitudeAdd then
+							repeat wait()
+								if game:GetService("Workspace"):FindFirstChild(v.Name) then
+									Tween(v.CFrame)
+								end
+							until AutoFarmChest == false or not v.Parent
+							Tween(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+							_G.MagnitudeAdd = _G.MagnitudeAdd+1500
+							break
+						end
+					end
+				end
+			end
+		end
+	end
+end)
+
       Tabs.Main:AddButton({
         Title = "Auto Redeem All Code",
         Description = "",
@@ -3032,7 +3089,7 @@ local StatusBone = Tabs.Main:AddParagraph({
 
 
 local ToggleBone = Tabs.Main:AddToggle("ToggleBone", {
-    Title = "Auto farm Bone",
+    Title = "Auto farm Bone (vip]",
     Description = "", 
     Default = false })
 ToggleBone:OnChanged(function(Value)
@@ -3140,6 +3197,7 @@ end)
 
 local ToggleCake = Tabs.Main:AddToggle("ToggleCake", {
     Title = "Auto Farm Cake Prince",
+    Description = "(vip)", 
     Default = false })
 ToggleCake:OnChanged(function(Value)
  _G.CakePrince = Value
@@ -3435,7 +3493,7 @@ local boss = Tabs.Main:AddSection("Boss Farm")
       local RoughSea = Tabs.Sea:AddSection("⛩️Kitsune ⛩️")
 	 
 local StatusKitsune = Tabs.Sea:AddParagraph({
-    Title = "Kistune Island Spam",
+    Title = "Kistune Island Spawn",
     Content = ""
 })
 function UpdateKitsune()
@@ -5382,7 +5440,7 @@ Options.ToggleQuanSat:SetValue(false)
 local ToggleFastAttack = Tabs.Player:AddToggle("ToggleFastAttack", {Title = " Click Attack Player",Description = "", Default = false })
 
 ToggleFastAttack:OnChanged(function(Value)
- _G.FastAttackSkyxhub = Value
+ _G.FastAttack = Value
 end)
 Options.ToggleFastAttack:SetValue(false)
 
@@ -5409,10 +5467,10 @@ SliderDelayAttackPlayer:SetValue(0.1)
 spawn(function()
 while wait() do
     pcall(function()
-        if _G.FastAttackSkyxhub then
+        if _G.FastAttack then
             repeat wait(_G.DelayAttackPlayer)
                AttackNoCoolDown()
-            until not _G.FastAttackSkyxhub
+            until not _G.FastAttack
         end
     end)
 end
@@ -7492,7 +7550,6 @@ Tabs.Misc:AddButton({
 	end
 })
 
-
 local Mastery = Tabs.Misc:AddSection("Misc")
 
 
@@ -7532,4 +7589,5 @@ function NoFog()
             v:Destroy()
         end
     end
-end   
+end
+   
