@@ -2554,7 +2554,7 @@ local listfastattack = {'Slow','Normal','Super'}
         Title = "Select Fast Attack",
         Values = listfastattack,
         Multi = false,
-        Default = 0.175,
+        Default = 1,
     })
     DropdownDelayAttack:SetValue("Fast Attack")
     DropdownDelayAttack:OnChanged(function(Value)
