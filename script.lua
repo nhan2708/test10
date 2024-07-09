@@ -2551,7 +2551,7 @@ local listfastattack = {'Slow','Normal','Super'}
 
     local DropdownDelayAttack = Tabs.Main:AddDropdown("DropdownDelayAttack", {
         Title = "Select Fast Attack",
-        Value = listfastattack,
+        Values = listfastattack,
         Multi = false,
         Default = 1,
     })
@@ -2559,11 +2559,11 @@ local listfastattack = {'Slow','Normal','Super'}
     DropdownDelayAttack:OnChanged(function(Value)
     _G.FastAttack = Value
 	if _G.FastAttack == "Slow" then
-		_G.Fast_Delay = 0.75
+		_G.Fast_Delay = 0.2
 	elseif _G.FastAttack == "Normal" then
-		_G.Fast_Delay = 0.5
+		_G.Fast_Delay = 0.175
 	elseif _G.FastAttack == "Super" then
-		_G.Fast_Delay = 0.25
+		_G.Fast_Delay = 0.15
 	 end
  end)
 
